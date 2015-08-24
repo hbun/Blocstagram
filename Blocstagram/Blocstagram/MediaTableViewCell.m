@@ -23,6 +23,7 @@ static UIFont *lightFont;
 static UIFont *boldFont;
 static UIColor *usernameLabelGray;
 static UIColor *commentLabelGray;
+static UIColor *firstCommentOrange;
 static UIColor *linkColor;
 static NSParagraphStyle *paragraphStyle;
 
@@ -34,6 +35,7 @@ static NSParagraphStyle *paragraphStyle;
     usernameLabelGray = [UIColor colorWithRed:0.933 green:0.933 blue:0.933 alpha:1]; /*#eeeeee*/
     commentLabelGray = [UIColor colorWithRed:0.898 green:0.898 blue:0.898 alpha:1]; /*#e5e5e5*/
     linkColor = [UIColor colorWithRed:0.345 green:0.324 blue:0.427 alpha:1]; /*#58506d*/
+    firstCommentOrange = [UIColor colorWithRed:1 green:0.3 blue:0.1 alpha:1];
     
     NSMutableParagraphStyle *mutableParagraphStyle = [[NSMutableParagraphStyle alloc] init];
     mutableParagraphStyle.headIndent = 20.0;
@@ -80,27 +82,48 @@ static NSParagraphStyle *paragraphStyle;
     [mutableUsernameAndCaptionString addAttribute:NSFontAttributeName value:[boldFont fontWithSize:usernameFontSize] range:usernameRange];
     [mutableUsernameAndCaptionString addAttribute:NSForegroundColorAttributeName value:linkColor range:usernameRange];
     
+    NSRange captionRange = [baseString rangeOfString:self.mediaItem.caption];
+    [mutableUsernameAndCaptionString addAttribute:NSKernAttributeName value:@5 range:captionRange];
+    
     return mutableUsernameAndCaptionString;
 }
 
 - (NSAttributedString *) commentString {
     NSMutableAttributedString *commentString = [[NSMutableAttributedString alloc] init];
-    
+    NSMutableParagraphStyle *mutableParagraphStyle = [[NSMutableParagraphStyle alloc] init];
+
     for (Comment *comment in self.mediaItem.comments) {
-        // Make a string that says "username comment"followed by a line break
+        
         NSString *baseString = [NSString stringWithFormat:@"%@ %@\n", comment.from.userName, comment.text];
-        
-        // Make an attributed string, with the "username" bold
-        
         NSMutableAttributedString *oneCommentString = [[NSMutableAttributedString alloc] initWithString:baseString attributes:@{NSFontAttributeName : lightFont, NSParagraphStyleAttributeName : paragraphStyle}];
         
-        NSRange usernameRange = [baseString rangeOfString:comment.from.userName];
-        [oneCommentString addAttribute:NSFontAttributeName value:boldFont range:usernameRange];
-        [oneCommentString addAttribute:NSForegroundColorAttributeName value:linkColor range:usernameRange];
+            if (comment == [self.mediaItem.comments objectAtIndex:0]) {
+                NSRange commentRange = [baseString rangeOfString:baseString];
+                NSRange usernameRange = [baseString rangeOfString:comment.from.userName];
+                [oneCommentString addAttribute:NSFontAttributeName value:boldFont range:usernameRange];
+                [oneCommentString addAttribute:NSForegroundColorAttributeName value:firstCommentOrange range:commentRange];
+            
+        } else if (comment >= [self.mediaItem.comments objectAtIndex:0]) {
+            
+            NSRange usernameRange = [baseString rangeOfString:comment.from.userName];
+            [oneCommentString addAttribute:NSFontAttributeName value:boldFont range:usernameRange];
+            [oneCommentString addAttribute:NSForegroundColorAttributeName value:linkColor range:usernameRange];
+        }
         
+        if ([self.mediaItem.comments indexOfObject:comment] % 2 == !0) {
+            NSRange alignmentRange = [baseString rangeOfString:baseString];
+            [mutableParagraphStyle setAlignment:NSTextAlignmentRight];
+            mutableParagraphStyle.headIndent = 20.0;
+            mutableParagraphStyle.firstLineHeadIndent = 20.0;
+            mutableParagraphStyle.tailIndent = -20.0;
+            mutableParagraphStyle.paragraphSpacingBefore = 5;
+            NSLog(@"Right aligned %ld", [self.mediaItem.comments indexOfObject:comment]);
+            
+            [oneCommentString addAttribute:NSParagraphStyleAttributeName value:mutableParagraphStyle range:alignmentRange];
+
+        }
         [commentString appendAttributedString:oneCommentString];
     }
-    
     return commentString;
 }
 
