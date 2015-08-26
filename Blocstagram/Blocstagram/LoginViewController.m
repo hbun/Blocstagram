@@ -36,7 +36,14 @@ NSString *const LoginViewControllerDidGetAccessTokenNotification = @"LoginViewCo
     
     self.title = NSLocalizedString(@"Login", @"Login");
     
-    // Provide Client ID:
+    // Back button
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]
+                                             initWithTitle:NSLocalizedString(@"Back", @"Back button")
+                                             style:UIBarButtonItemStylePlain
+                                             target:self
+                                             action:@selector(backButtonTapped:)];
+
+        // Provide Client ID:
     NSString *urlString = [NSString stringWithFormat:@"https://instagram.com/oauth/authorize/?client_id=%@&redirect_uri=%@&response_type=token", [DataSource instagramClientID], [self redirectURI]];
     NSURL *url = [NSURL URLWithString:urlString];
     
@@ -44,6 +51,11 @@ NSString *const LoginViewControllerDidGetAccessTokenNotification = @"LoginViewCo
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
         [self.webView loadRequest:request];
     }
+    
+}
+
+- (IBAction)backButtonTapped:(id)sender {
+    [self.webView goBack];
 }
 
 // Set the web view's frame:
@@ -56,6 +68,7 @@ NSString *const LoginViewControllerDidGetAccessTokenNotification = @"LoginViewCo
     [self clearInstagramCookies];
    
     self.webView.delegate = nil;
+    
 }
 
 /**
