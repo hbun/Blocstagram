@@ -68,6 +68,10 @@
                     } else {
                         [self populateDataWithParameters:nil completionHandler:nil];
                     }
+                    
+                    [[DataSource sharedInstance] requestNewItemsWithCompletionHandler:^(NSError *error) {
+                    }];
+                    
                 });
             });
         }
