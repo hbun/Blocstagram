@@ -10,8 +10,10 @@
 #import "Media.h"
 #import "Comment.h"
 #import "User.h"
+#import "MediaFullScreenViewController.h"
 
-@interface MediaTableViewCell () <UIGestureRecognizerDelegate>
+
+@interface MediaTableViewCell () <UIGestureRecognizerDelegate, MediaFullScreenViewControllerDelegate>
 
 @property (nonatomic, strong) UIImageView *mediaImageView;
 @property (nonatomic, strong) UILabel *usernameAndCaptionLabel;
@@ -223,6 +225,11 @@ static NSParagraphStyle *paragraphStyle;
     if (sender.state == UIGestureRecognizerStateBegan) {
         [self.delegate cell:self didLongPressImageView:self.mediaImageView];
     }
+}
+
+- (void) shareTap:(UITapGestureRecognizer *)sender {
+    NSLog(@"Check 3");
+    [self.delegate cell:self didLongPressImageView:self.mediaImageView];
 }
 
 #pragma mark - UIGestureRecognizerDelegate

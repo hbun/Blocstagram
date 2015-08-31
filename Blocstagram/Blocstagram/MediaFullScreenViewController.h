@@ -10,10 +10,19 @@
 
 @class Media;
 
+@protocol MediaFullScreenViewControllerDelegate <NSObject>
+
+- (void) shareTap:(UITapGestureRecognizer*)tap;
+
+@end
+
 @interface MediaFullScreenViewController : UIViewController
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIImageView *imageView;
+
+@property (nonatomic, weak) id <MediaFullScreenViewControllerDelegate> delegate;
+
 
 - (instancetype) initWithMedia:(Media *)media;
 
