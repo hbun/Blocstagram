@@ -24,6 +24,8 @@
 		676C4FDB1B865A57001F2D03 /* 10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 676C4FD11B865A57001F2D03 /* 10.jpg */; };
 		676C4FDE1B865A91001F2D03 /* ImagesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 676C4FDD1B865A91001F2D03 /* ImagesTableViewController.m */; };
 		678317E21B8D3C180019C72B /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 678317E11B8D3C180019C72B /* LoginViewController.m */; };
+		67BE99F91B90E8C300D21868 /* MediaFullScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BE99F81B90E8C300D21868 /* MediaFullScreenViewController.m */; };
+		67BE99FC1B911D1000D21868 /* MediaFullScreenAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BE99FB1B911D1000D21868 /* MediaFullScreenAnimator.m */; };
 		67E533221B8A430400CDE983 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 67E533211B8A430400CDE983 /* User.m */; };
 		67E533251B8A43A800CDE983 /* Media.m in Sources */ = {isa = PBXBuildFile; fileRef = 67E533241B8A43A800CDE983 /* Media.m */; };
 		67E533281B8A449300CDE983 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 67E533271B8A449300CDE983 /* Comment.m */; };
@@ -69,6 +71,10 @@
 		676C4FDD1B865A91001F2D03 /* ImagesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagesTableViewController.m; sourceTree = "<group>"; };
 		678317E01B8D3C180019C72B /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		678317E11B8D3C180019C72B /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		67BE99F71B90E8C300D21868 /* MediaFullScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaFullScreenViewController.h; sourceTree = "<group>"; };
+		67BE99F81B90E8C300D21868 /* MediaFullScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaFullScreenViewController.m; sourceTree = "<group>"; };
+		67BE99FA1B911D1000D21868 /* MediaFullScreenAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaFullScreenAnimator.h; sourceTree = "<group>"; };
+		67BE99FB1B911D1000D21868 /* MediaFullScreenAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaFullScreenAnimator.m; sourceTree = "<group>"; };
 		67E533201B8A430400CDE983 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		67E533211B8A430400CDE983 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		67E533231B8A43A800CDE983 /* Media.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Media.h; sourceTree = "<group>"; };
@@ -140,6 +146,10 @@
 				676C4FDD1B865A91001F2D03 /* ImagesTableViewController.m */,
 				67E5332C1B8A662400CDE983 /* MediaTableViewCell.h */,
 				67E5332D1B8A662400CDE983 /* MediaTableViewCell.m */,
+				67BE99F71B90E8C300D21868 /* MediaFullScreenViewController.h */,
+				67BE99F81B90E8C300D21868 /* MediaFullScreenViewController.m */,
+				67BE99FA1B911D1000D21868 /* MediaFullScreenAnimator.h */,
+				67BE99FB1B911D1000D21868 /* MediaFullScreenAnimator.m */,
 				67E533201B8A430400CDE983 /* User.h */,
 				67E533211B8A430400CDE983 /* User.m */,
 				67E533231B8A43A800CDE983 /* Media.h */,
@@ -352,9 +362,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67BE99F91B90E8C300D21868 /* MediaFullScreenViewController.m in Sources */,
 				67E533221B8A430400CDE983 /* User.m in Sources */,
 				67E533281B8A449300CDE983 /* Comment.m in Sources */,
 				67E5332E1B8A662400CDE983 /* MediaTableViewCell.m in Sources */,
+				67BE99FC1B911D1000D21868 /* MediaFullScreenAnimator.m in Sources */,
 				67E533251B8A43A800CDE983 /* Media.m in Sources */,
 				676C4FA71B86573E001F2D03 /* AppDelegate.m in Sources */,
 				678317E21B8D3C180019C72B /* LoginViewController.m in Sources */,
