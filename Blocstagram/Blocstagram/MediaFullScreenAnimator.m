@@ -30,6 +30,7 @@
         CGRect endFrame = fromViewController.view.frame; // #16
         
         toViewController.view.frame = startFrame;
+        
         fullScreenVC.imageView.frame = toViewController.view.bounds;
         
         [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
@@ -40,6 +41,7 @@
         } completion:^(BOOL finished) {
             [transitionContext completeTransition:YES];
         }];
+        
     } else {
         MediaFullScreenViewController *fullScreenVC = (MediaFullScreenViewController *)fromViewController;
         

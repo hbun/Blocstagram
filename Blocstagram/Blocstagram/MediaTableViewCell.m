@@ -52,6 +52,7 @@ static NSParagraphStyle *paragraphStyle;
 
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    
     if (self) {
         // initialize code
         self.mediaImageView = [[UIImageView alloc] init];
@@ -116,6 +117,7 @@ static NSParagraphStyle *paragraphStyle;
         self.commentLabelHeightConstraint.identifier = @"Comment lebel height constraint";
         
         [self.contentView addConstraints:@[self.imageHeightConstraint, self.usernameAndCaptionLabelHeightConstraint, self.commentLabelHeightConstraint]];
+        
     }
     
     return self;

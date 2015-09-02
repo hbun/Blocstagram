@@ -31,6 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 // #1
+    
     self.scrollView = [UIScrollView new];
     self.scrollView.delegate = self;
     self.scrollView.backgroundColor = [UIColor whiteColor];
@@ -55,6 +56,19 @@
     
     [self.scrollView addGestureRecognizer:self.tap];
     [self.scrollView addGestureRecognizer:self.doubleTap];
+    
+    UIButton *shareButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [shareButton addTarget:self
+                    action:@selector(buttonTapped)
+          forControlEvents:UIControlEventTouchUpInside];
+    [shareButton setTitle:NSLocalizedString(@"Share", @"Share") forState:UIControlStateNormal];
+    shareButton.frame = CGRectMake(CGRectGetWidth(self.view.bounds)-90, 20, 70.0, 30.0);
+    shareButton.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:shareButton];
+    
+    CGFloat newContentOffsetX = (self.scrollView.contentSize.width - [UIScreen mainScreen].bounds.size.width)/2;
+    self.scrollView.contentOffset = CGPointMake(newContentOffsetX,0);
+    
 }
 
 - (void) viewWillLayoutSubviews {
@@ -80,12 +94,13 @@
 }
 
 - (void) centerScrollView {
+   
     [self.imageView sizeToFit];
     
     CGSize boundsSize = self.scrollView.bounds.size;
     CGRect contentsFrame = self.imageView.frame;
     
-    if (contentsFrame.size.width <boundsSize.width) {
+    if (contentsFrame.size.width < boundsSize.width) {
         contentsFrame.origin.x = (boundsSize.width - CGRectGetWidth(contentsFrame))/2;
     } else {
         contentsFrame.origin.x = 0;
@@ -98,12 +113,14 @@
     }
     
     self.imageView.frame = contentsFrame;
+    
 }
 
 #pragma mark - UIScrollViewDelegate
 // #6
 - (UIView*) viewForZoomingInScrollView:(UIScrollView *)scrollView {
     return self.imageView;
+    
 }
 
 //#7
@@ -113,7 +130,7 @@
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+
     [self centerScrollView];
 }
 
@@ -142,6 +159,17 @@
     }
 }
 
+-(void) buttonTapped {
+    NSMutableArray *imageToShare = [NSMutableArray array];
+
+    [imageToShare addObject:self.imageView.image];
+    
+    if (imageToShare.count > 0) {
+        UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:imageToShare applicationActivities:nil];
+        [self presentViewController:activityVC animated:YES completion:nil];
+    }
+
+}
 
 /*
 #pragma mark - Navigation
