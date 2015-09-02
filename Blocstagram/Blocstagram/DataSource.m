@@ -284,6 +284,10 @@
     }
 }
 
+-(void) downloadImageTryAgain:(Media*)mediaItem {
+    [self downloadImageForMediaItem:mediaItem];
+}
+
 - (NSString *) pathForFilename:(NSString *) filename {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths firstObject];

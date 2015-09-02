@@ -22,6 +22,7 @@
 
 @property (nonatomic, strong) UITapGestureRecognizer *tapGestureRecognizer;
 @property (nonatomic, strong) UILongPressGestureRecognizer *longPressGestureRecognizer;
+@property (nonatomic, strong) UITapGestureRecognizer *twoFingerTapGestureRecognizer;
 
 @end
 
@@ -64,6 +65,11 @@ static NSParagraphStyle *paragraphStyle;
         self.longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressFired:)];
         self.longPressGestureRecognizer.delegate = self;
         [self.mediaImageView addGestureRecognizer:self.longPressGestureRecognizer];
+        
+        self.twoFingerTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(twoFingerTapFired:)];
+        self.twoFingerTapGestureRecognizer.delegate = self;
+        self.twoFingerTapGestureRecognizer.numberOfTouchesRequired = 2;
+        [self.contentView addGestureRecognizer:self.twoFingerTapGestureRecognizer];
         
         self.usernameAndCaptionLabel = [[UILabel alloc] init];
         self.usernameAndCaptionLabel.numberOfLines = 0;
@@ -216,13 +222,20 @@ static NSParagraphStyle *paragraphStyle;
 #pragma mark - Image View
 
 - (void) tapFired:(UITapGestureRecognizer *) sender {
-    [self.delegate cell:self didTapImageView:self.mediaImageView];
+        [self.delegate cell:self didTapImageView:self.mediaImageView];
 }
 
 - (void) longPressFired:(UILongPressGestureRecognizer *)sender {
     if (sender.state == UIGestureRecognizerStateBegan) {
         [self.delegate cell:self didLongPressImageView:self.mediaImageView];
     }
+}
+
+- (void) twoFingerTapFired:(UITapGestureRecognizer *) sender {
+    [self setMediaItem:_mediaItem];
+    [self.delegate cell:self didTwoFingerTapImageView:self.mediaImageView];
+    NSLog(@"Check1 ");
+
 }
 
 #pragma mark - UIGestureRecognizerDelegate

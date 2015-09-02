@@ -187,6 +187,13 @@
     }
 }
 
+-(void) cell:(MediaTableViewCell *)cell didTwoFingerTapImageView:(UIImageView *)imageView {
+    [[DataSource sharedInstance] downloadImageTryAgain:cell.mediaItem];
+
+}
+
+
+
 #pragma mark - UIViewControllerTransitioningDelegate
 
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented
