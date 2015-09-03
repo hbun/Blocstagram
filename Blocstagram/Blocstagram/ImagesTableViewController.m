@@ -110,7 +110,7 @@
 }
 
 // Infinite Scroll:
-- (void) infiniteScrhollIfNecessary {
+- (void) infiniteScrollIfNecessary {
     // #3
     NSIndexPath *bottomIndexPath = [[self.tableView indexPathsForVisibleRows] lastObject];
     
@@ -124,7 +124,7 @@
 
 // #4
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    [self infiniteScrhollIfNecessary];
+    [self infiniteScrollIfNecessary];
 }
 
 #pragma mark - Table view data source
