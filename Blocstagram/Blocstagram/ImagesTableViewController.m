@@ -17,9 +17,10 @@
 
 
 
-@interface ImagesTableViewController () <MediaTableViewCellDelegate, UIViewControllerTransitioningDelegate>
+@interface ImagesTableViewController () <MediaTableViewCellDelegate, UIViewControllerTransitioningDelegate, UIScrollViewDelegate>
 
 @property (nonatomic, weak) UIImageView *lastTappedImageView;
+@property (nonatomic, strong) UIScrollView *scrollView;
 
 @end
 
@@ -43,6 +44,7 @@
     [self.refreshControl addTarget:self action:@selector(refreshControlDidFire:) forControlEvents:UIControlEventValueChanged];
     
     [self.tableView registerClass:[MediaTableViewCell class] forCellReuseIdentifier:@"mediaCell"];
+    
 }
 
 - (void) dealloc {
@@ -145,11 +147,15 @@
 }
 
 - (void) tableView:(UITableView*)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    Media *mediaItem = [DataSource sharedInstance].mediaItems[indexPath.row];
-    if (mediaItem.downloadState == MediaDownloadStateNeedsImage) {
-        [[DataSource sharedInstance] downloadImageForMediaItem:mediaItem];
+    
+        Media *mediaItem = [DataSource sharedInstance].mediaItems[indexPath.row];
+        
+        if (mediaItem.downloadState == MediaDownloadStateNeedsImage) {
+            [[DataSource sharedInstance] downloadImageForMediaItem:mediaItem];
+            
     }
 }
+
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     Media *item = [DataSource sharedInstance].mediaItems[indexPath.row];

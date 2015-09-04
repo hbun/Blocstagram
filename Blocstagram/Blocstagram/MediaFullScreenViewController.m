@@ -55,6 +55,7 @@
     
     [self.scrollView addGestureRecognizer:self.tap];
     [self.scrollView addGestureRecognizer:self.doubleTap];
+    
 }
 
 - (void) viewWillLayoutSubviews {
