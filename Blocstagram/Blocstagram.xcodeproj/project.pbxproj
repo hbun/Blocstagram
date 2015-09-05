@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		674ADA111B9A6AFF00987939 /* CircleSpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 674ADA101B9A6AFF00987939 /* CircleSpinnerView.m */; };
+		674ADA141B9A94B300987939 /* LikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 674ADA131B9A94B300987939 /* LikeButton.m */; };
 		676C4FA41B86573E001F2D03 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 676C4FA31B86573E001F2D03 /* main.m */; };
 		676C4FA71B86573E001F2D03 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 676C4FA61B86573E001F2D03 /* AppDelegate.m */; };
 		676C4FAF1B86573E001F2D03 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 676C4FAE1B86573E001F2D03 /* Images.xcassets */; };
@@ -47,6 +49,10 @@
 /* Begin PBXFileReference section */
 		1422BEC1660179A57A88D798 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		5C282C864691FA0AF226E89D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		674ADA0F1B9A6AFF00987939 /* CircleSpinnerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleSpinnerView.h; sourceTree = "<group>"; };
+		674ADA101B9A6AFF00987939 /* CircleSpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleSpinnerView.m; sourceTree = "<group>"; };
+		674ADA121B9A94B300987939 /* LikeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikeButton.h; sourceTree = "<group>"; };
+		674ADA131B9A94B300987939 /* LikeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikeButton.m; sourceTree = "<group>"; };
 		676C4F9E1B86573E001F2D03 /* Blocstagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blocstagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		676C4FA21B86573E001F2D03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		676C4FA31B86573E001F2D03 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -160,6 +166,10 @@
 				67E5332A1B8A461200CDE983 /* DataSource.m */,
 				678317E01B8D3C180019C72B /* LoginViewController.h */,
 				678317E11B8D3C180019C72B /* LoginViewController.m */,
+				674ADA0F1B9A6AFF00987939 /* CircleSpinnerView.h */,
+				674ADA101B9A6AFF00987939 /* CircleSpinnerView.m */,
+				674ADA121B9A94B300987939 /* LikeButton.h */,
+				674ADA131B9A94B300987939 /* LikeButton.m */,
 				676C4FAE1B86573E001F2D03 /* Images.xcassets */,
 				676C4FB01B86573E001F2D03 /* LaunchScreen.xib */,
 				676C4FA11B86573E001F2D03 /* Supporting Files */,
@@ -372,6 +382,8 @@
 				678317E21B8D3C180019C72B /* LoginViewController.m in Sources */,
 				67E5332B1B8A461200CDE983 /* DataSource.m in Sources */,
 				676C4FA41B86573E001F2D03 /* main.m in Sources */,
+				674ADA141B9A94B300987939 /* LikeButton.m in Sources */,
+				674ADA111B9A6AFF00987939 /* CircleSpinnerView.m in Sources */,
 				676C4FDE1B865A91001F2D03 /* ImagesTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
