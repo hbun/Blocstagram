@@ -21,11 +21,26 @@
         CGPoint arcCenter = CGPointMake(self.radius+self.strokeThickness/2+5, self.radius+self.strokeThickness/2+5); //calculates center of circle
         CGRect rect = CGRectMake(0,0, arcCenter.x*2, arcCenter.y*2); // The box in which the circle fits/exists
         
-        UIBezierPath* smoothedPath  = [UIBezierPath bezierPathWithArcCenter:arcCenter // Creates the path of the circle.
-                                                                     radius:self.radius
-                                                                 startAngle:M_PI*3/2
-                                                                   endAngle:M_PI/2+M_PI*5
-                                                                  clockwise:YES];
+        UIBezierPath* smoothedPath  = [UIBezierPath bezierPath];
+        [smoothedPath moveToPoint:CGPointMake(arcCenter.x, arcCenter.y-14)];
+        
+        [smoothedPath addLineToPoint:CGPointMake(arcCenter.x+11, arcCenter.y-3)];
+        [smoothedPath addLineToPoint:CGPointMake(arcCenter.x+7, arcCenter.y+9)];
+        [smoothedPath addLineToPoint:CGPointMake(arcCenter.x-7, arcCenter.y+9)];
+        [smoothedPath addLineToPoint:CGPointMake(arcCenter.x-11, arcCenter.y-3)];
+        [smoothedPath closePath];
+        
+        
+     /** Pentagram path:
+      UIBezierPath* smoothedPath  = [UIBezierPath bezierPath];
+      [smoothedPath moveToPoint:CGPointMake(arcCenter.x, arcCenter.y-14)];
+      
+      [smoothedPath addLineToPoint:CGPointMake(arcCenter.x+7, arcCenter.y+9)];
+      [smoothedPath addLineToPoint:CGPointMake(arcCenter.x-11, arcCenter.y-3)];
+      [smoothedPath addLineToPoint:CGPointMake(arcCenter.x+11, arcCenter.y-3)];
+      [smoothedPath addLineToPoint:CGPointMake(arcCenter.x-7, arcCenter.y+9)];
+      [smoothedPath closePath];
+        */
         
         _circleLayer = [CAShapeLayer layer];
         _circleLayer.contentsScale = [[UIScreen mainScreen] scale];
@@ -130,9 +145,9 @@
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.strokeThickness = 1;
-        self.radius = 12;
-        self.strokeColor = [UIColor purpleColor];
+        self.strokeThickness = 2;
+        self.radius = 15;
+        self.strokeColor = [UIColor orangeColor];
     }
     return self;
 }

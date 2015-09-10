@@ -28,6 +28,7 @@
 		678317E21B8D3C180019C72B /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 678317E11B8D3C180019C72B /* LoginViewController.m */; };
 		67BE99F91B90E8C300D21868 /* MediaFullScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BE99F81B90E8C300D21868 /* MediaFullScreenViewController.m */; };
 		67BE99FC1B911D1000D21868 /* MediaFullScreenAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BE99FB1B911D1000D21868 /* MediaFullScreenAnimator.m */; };
+		67CE98CD1B9CFDB60003C81C /* SKBounceAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 67CE98CC1B9CFDB60003C81C /* SKBounceAnimation.m */; };
 		67E533221B8A430400CDE983 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 67E533211B8A430400CDE983 /* User.m */; };
 		67E533251B8A43A800CDE983 /* Media.m in Sources */ = {isa = PBXBuildFile; fileRef = 67E533241B8A43A800CDE983 /* Media.m */; };
 		67E533281B8A449300CDE983 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 67E533271B8A449300CDE983 /* Comment.m */; };
@@ -81,6 +82,9 @@
 		67BE99F81B90E8C300D21868 /* MediaFullScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaFullScreenViewController.m; sourceTree = "<group>"; };
 		67BE99FA1B911D1000D21868 /* MediaFullScreenAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaFullScreenAnimator.h; sourceTree = "<group>"; };
 		67BE99FB1B911D1000D21868 /* MediaFullScreenAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaFullScreenAnimator.m; sourceTree = "<group>"; };
+		67CE98CB1B9CFDB60003C81C /* SKBounceAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKBounceAnimation.h; sourceTree = "<group>"; };
+		67CE98CC1B9CFDB60003C81C /* SKBounceAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKBounceAnimation.m; sourceTree = "<group>"; };
+		67CE98D21B9D04A50003C81C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		67E533201B8A430400CDE983 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		67E533211B8A430400CDE983 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		67E533231B8A43A800CDE983 /* Media.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Media.h; sourceTree = "<group>"; };
@@ -170,6 +174,8 @@
 				674ADA101B9A6AFF00987939 /* CircleSpinnerView.m */,
 				674ADA121B9A94B300987939 /* LikeButton.h */,
 				674ADA131B9A94B300987939 /* LikeButton.m */,
+				67CE98CB1B9CFDB60003C81C /* SKBounceAnimation.h */,
+				67CE98CC1B9CFDB60003C81C /* SKBounceAnimation.m */,
 				676C4FAE1B86573E001F2D03 /* Images.xcassets */,
 				676C4FB01B86573E001F2D03 /* LaunchScreen.xib */,
 				676C4FA11B86573E001F2D03 /* Supporting Files */,
@@ -223,6 +229,7 @@
 		BE371FE8BAA8C5FC6F3DEE0D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				67CE98D21B9D04A50003C81C /* UIKit.framework */,
 				5C282C864691FA0AF226E89D /* libPods.a */,
 			);
 			name = Frameworks;
@@ -380,6 +387,7 @@
 				67E533251B8A43A800CDE983 /* Media.m in Sources */,
 				676C4FA71B86573E001F2D03 /* AppDelegate.m in Sources */,
 				678317E21B8D3C180019C72B /* LoginViewController.m in Sources */,
+				67CE98CD1B9CFDB60003C81C /* SKBounceAnimation.m in Sources */,
 				67E5332B1B8A461200CDE983 /* DataSource.m in Sources */,
 				676C4FA41B86573E001F2D03 /* main.m in Sources */,
 				674ADA141B9A94B300987939 /* LikeButton.m in Sources */,
@@ -505,6 +513,10 @@
 			baseConfigurationReference = EC07C455DC88475EDED89DBC /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Blocstagram/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -516,6 +528,10 @@
 			baseConfigurationReference = 1422BEC1660179A57A88D798 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Blocstagram/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

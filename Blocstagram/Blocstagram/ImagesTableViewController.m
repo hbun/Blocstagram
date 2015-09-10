@@ -43,6 +43,7 @@
     [self.refreshControl addTarget:self action:@selector(refreshControlDidFire:) forControlEvents:UIControlEventValueChanged];
     
     [self.tableView registerClass:[MediaTableViewCell class] forCellReuseIdentifier:@"mediaCell"];
+
 }
 
 - (void) dealloc {
@@ -111,7 +112,8 @@
 
 // Infinite Scroll:
 - (void) infiniteScrhollIfNecessary {
-    // #3
+
+// #3
     NSIndexPath *bottomIndexPath = [[self.tableView indexPathsForVisibleRows] lastObject];
     
     if (bottomIndexPath && bottomIndexPath.row == [DataSource sharedInstance].mediaItems.count - 1) {
@@ -136,11 +138,12 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
     MediaTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"mediaCell" forIndexPath:indexPath];
     cell.delegate = self;
     cell.mediaItem = [DataSource sharedInstance].mediaItems[indexPath.row];
-    
+    cell.mediaItem.likeState = [userDefaults boolForKey:[NSString stringWithFormat:@"%@", cell.mediaItem.idNumber]];
     return cell;
 }
 

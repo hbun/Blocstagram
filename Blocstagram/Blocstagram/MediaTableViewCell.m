@@ -20,11 +20,15 @@
 @property (nonatomic, strong) NSLayoutConstraint *imageHeightConstraint;
 @property (nonatomic, strong) NSLayoutConstraint *usernameAndCaptionLabelHeightConstraint;
 @property (nonatomic, strong) NSLayoutConstraint *commentLabelHeightConstraint;
+@property (nonatomic, strong) NSLayoutConstraint *likeCountVerticalConstraint;
+
 
 @property (nonatomic, strong) UITapGestureRecognizer *tapGestureRecognizer;
 @property (nonatomic, strong) UILongPressGestureRecognizer *longPressGestureRecognizer;
 
 @property (nonatomic, strong) LikeButton *likeButton;
+@property (nonatomic, strong) UILabel *likeLabel;
+@property (nonatomic, strong) NSNumber* likeNumber;
 
 @end
 
@@ -56,6 +60,8 @@ static NSParagraphStyle *paragraphStyle;
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        
+
         // initialize code
         self.mediaImageView = [[UIImageView alloc] init];
         self.mediaImageView.userInteractionEnabled = YES;
@@ -80,15 +86,26 @@ static NSParagraphStyle *paragraphStyle;
         [self.likeButton addTarget:self action:@selector(likePressed:) forControlEvents:UIControlEventTouchUpInside];
         self.likeButton.backgroundColor = usernameLabelGray;
         
-        for (UIView *view  in @[self.mediaImageView, self.usernameAndCaptionLabel, self.commentLabel, self.likeButton]) {
+        self.likeNumber = [[NSNumber alloc ]init];
+        
+        self.likeLabel = [[UILabel alloc] init];
+        self.likeLabel.backgroundColor = usernameLabelGray;
+        self.likeLabel.textAlignment = NSTextAlignmentRight;
+        self.likeLabel.numberOfLines = 0;
+        [self.likeLabel sizeToFit];
+        
+        self.contentView.backgroundColor = usernameLabelGray;
+        
+        
+        for (UIView *view  in @[self.mediaImageView, self.usernameAndCaptionLabel, self.commentLabel, self.likeLabel, self.likeButton]) {
             [self.contentView addSubview:view];
             view.translatesAutoresizingMaskIntoConstraints = NO;
         }
         
-        NSDictionary *viewDictionary = NSDictionaryOfVariableBindings(_mediaImageView, _usernameAndCaptionLabel, _commentLabel, _likeButton);
+        NSDictionary *viewDictionary = NSDictionaryOfVariableBindings(_mediaImageView, _usernameAndCaptionLabel, _commentLabel, _likeLabel, _likeButton);
         
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_mediaImageView]|" options:kNilOptions metrics:nil views:viewDictionary]];
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_usernameAndCaptionLabel][_likeButton(==38)]|" options:NSLayoutFormatAlignAllTop | NSLayoutFormatAlignAllBottom metrics:nil views:viewDictionary]];
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_usernameAndCaptionLabel][_likeLabel(==52)][_likeButton(==38)]|" options:NSLayoutFormatAlignAllTop | NSLayoutFormatAlignAllBottom metrics:nil views:viewDictionary]];
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_commentLabel]|" options:kNilOptions metrics:nil views:viewDictionary]];
         
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_mediaImageView][_usernameAndCaptionLabel][_commentLabel]"
@@ -120,13 +137,24 @@ static NSParagraphStyle *paragraphStyle;
                                                                          attribute:NSLayoutAttributeNotAnAttribute
                                                                         multiplier:1
                                                                           constant:100];
-        self.commentLabelHeightConstraint.identifier = @"Comment lebel height constraint";
+        self.commentLabelHeightConstraint.identifier = @"Comment label height constraint";
         
-        [self.contentView addConstraints:@[self.imageHeightConstraint, self.usernameAndCaptionLabelHeightConstraint, self.commentLabelHeightConstraint]];
+        self.likeCountVerticalConstraint = [NSLayoutConstraint constraintWithItem:_likeLabel
+                                                                         attribute:NSLayoutAttributeHeight
+                                                                         relatedBy:NSLayoutRelationEqual
+                                                                            toItem:nil
+                                                                         attribute:NSLayoutAttributeNotAnAttribute
+                                                                        multiplier:1
+                                                                          constant:38];
+        self.likeCountVerticalConstraint.identifier = @"Comment label height constraint";
+
+        
+        [self.contentView addConstraints:@[self.imageHeightConstraint, self.usernameAndCaptionLabelHeightConstraint, self.commentLabelHeightConstraint, self.likeCountVerticalConstraint]];
     }
     
     return self;
 }
+
 
 - (NSAttributedString *) usernameAndCaptionString {
     // #1
@@ -167,6 +195,18 @@ static NSParagraphStyle *paragraphStyle;
     return commentString;
 }
 
+- (NSAttributedString*) likeCount {
+    NSMutableAttributedString *likeCount =[[NSMutableAttributedString alloc] init];
+    
+    NSString *baseString = [NSString stringWithFormat:@"%@", self.likeNumber];
+    
+    NSMutableAttributedString *likeCountString = [[NSMutableAttributedString alloc] initWithString:baseString attributes:@{NSFontAttributeName : boldFont, NSParagraphStyleAttributeName : paragraphStyle, NSForegroundColorAttributeName : linkColor}];
+    
+    [likeCount appendAttributedString:likeCountString];
+    
+    return likeCount;
+}
+
 - (void) layoutSubviews {
     [super layoutSubviews];
     
@@ -176,7 +216,7 @@ static NSParagraphStyle *paragraphStyle;
     CGSize commentLabelSize = [self.commentLabel sizeThatFits:maxSize];
     
     self.usernameAndCaptionLabelHeightConstraint.constant = usernameLabelSize.height == 0 ? 0 : usernameLabelSize.height + 20;
-    self.commentLabelHeightConstraint.constant = commentLabelSize.height == 0 ? 0 : usernameLabelSize.height + 20;;
+    self.commentLabelHeightConstraint.constant = commentLabelSize.height == 0 ? 0 : commentLabelSize.height + 20;;
 
     if (self.mediaItem.image.size.width > 0 && CGRectGetWidth(self.contentView.bounds) > 0) {
         self.imageHeightConstraint.constant = self.mediaItem.image.size.height /self.mediaItem.image.size.width * CGRectGetWidth(self.contentView.bounds);
@@ -189,11 +229,27 @@ static NSParagraphStyle *paragraphStyle;
 }
 
 - (void) setMediaItem:(Media *)mediaItem  {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+
     _mediaItem = mediaItem;
     self.mediaImageView.image = _mediaItem.image;
     self.usernameAndCaptionLabel.attributedText = [self usernameAndCaptionString];
     self.commentLabel.attributedText = [self commentString];
+    self.likeNumber = mediaItem.likeCount;
     self.likeButton.likeButtonState = mediaItem.likeState;
+    
+    //If likestate from database is different from local, update local and save it:
+    if (self.likeButton.likeButtonState != [userDefaults boolForKey:[NSString stringWithFormat:@"%@", self.mediaItem.idNumber]]) {
+        self.likeButton.likeButtonState = [userDefaults boolForKey:[NSString stringWithFormat:@"%@", self.mediaItem.idNumber]];
+        self.likeNumber = @([mediaItem.likeCount floatValue] + 1);
+    } else if (self.likeButton.likeButtonState == self.mediaItem.likeState) {
+        [userDefaults setBool:self.likeButton.likeButtonState forKey:[NSString stringWithFormat:@"%@", self.mediaItem.idNumber]];
+        // ^ If the same likestate, remember it as the current likestate
+    }
+    self.likeLabel.attributedText = [self likeCount];
+    NSLog(@"%@", mediaItem.idNumber);
+    [userDefaults synchronize];
+
 }
 
 + (CGFloat) heightForMediaItem:(Media *)mediaItem width:(CGFloat)width {
@@ -221,6 +277,7 @@ static NSParagraphStyle *paragraphStyle;
     // Configure the view for the selected state
 }
 
+
 #pragma mark - Image View
 
 - (void) tapFired:(UITapGestureRecognizer *) sender {
@@ -243,7 +300,51 @@ static NSParagraphStyle *paragraphStyle;
 
 // When button is tapped, inform the delegate:
 -(void) likePressed:(UIButton *)sender {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+
     [self.delegate cellDidPressLikeButton:self];
+    
+    
+    //animation
+    NSString *keyPath = @"position.y";
+    id finalValue = [NSNumber numberWithFloat:23];
+    [self.likeButton.layer setValue:finalValue forKeyPath:keyPath];
+
+    SKBounceAnimation *bounceAnimation = [SKBounceAnimation animationWithKeyPath:keyPath];
+    bounceAnimation.fromValue = [NSNumber numberWithFloat:0];
+    bounceAnimation.toValue = finalValue;
+    bounceAnimation.duration = 0.5f;
+    bounceAnimation.numberOfBounces = 2;
+    bounceAnimation.shake = YES;
+    
+    //update like count and state
+    [self.likeButton setLikeButtonState:self.mediaItem.likeState];
+
+    self.likeNumber = [self likeCountUpdateWhenPressed:sender];
+    [userDefaults setBool:self.likeButton.likeButtonState forKey:[NSString stringWithFormat:@"%@", self.mediaItem.idNumber]];
+    [userDefaults synchronize];
+    self.likeLabel.attributedText = [self likeCount];
+    NSLog(@"%@", [self.likeNumber stringValue]);
+    
+    
+    [userDefaults setBool:self.likeButton.likeButtonState forKey:[NSString stringWithFormat:@"%@", self.mediaItem.idNumber]];
+    [userDefaults synchronize];
+    
+    [self.likeButton.imageView.layer addAnimation:bounceAnimation forKey:@"someKey"];
+    
 }
 
+-(NSNumber*) likeCountUpdateWhenPressed:(UIButton *)sender {
+    
+    NSNumber *newCount;
+    if (self.likeButton.likeButtonState == LikeStateLiked) {
+        newCount =  @([self.mediaItem.likeCount floatValue] + 1);
+    }
+    if (self.likeButton.likeButtonState == LikeStateNotLiked) {
+        newCount =  @([self.mediaItem.likeCount floatValue]);
+    }
+    
+    return newCount;
+    
+}
 @end

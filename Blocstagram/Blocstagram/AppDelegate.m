@@ -20,6 +20,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [NSUserDefaults standardUserDefaults];
+
 
 
     [DataSource sharedInstance]; // create the data source (so it can receive the access token notification)
@@ -69,6 +71,8 @@
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults synchronize];
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 

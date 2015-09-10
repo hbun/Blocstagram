@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+
 typedef NS_ENUM(NSInteger, LikeState) {
     LikeStateNotLiked       = 0,
     LikeStateLiking         = 1,
