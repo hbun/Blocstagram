@@ -89,8 +89,9 @@
     _isWritingComment = isWritingComment;
     
     if (animated) {
-        [UIView animateWithDuration:0.2 animations:^{
+        [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:0.7 initialSpringVelocity:0.9 options:UIViewAnimationOptionCurveEaseIn animations:^{
             [self layoutSubviews];
+        } completion:^(BOOL finished) {
         }];
     } else {
         [self layoutSubviews];
@@ -109,7 +110,7 @@
 - (void) commentButtonPressed:(UIButton *) sender {
     if (self.isWritingComment) {
         [self.textView resignFirstResponder];
-        self.textView.userInteractionEnabled = NO;
+        self.textView.userInteractionEnabled = YES;
         [self.delegate commentViewDidPressCommentButton:self];
     } else {
         [self setIsWritingComment:YES animated:YES];
