@@ -14,10 +14,10 @@
 #import "MediaTableViewCell.h"
 #import "MediaFullScreenViewController.h"
 #import "MediaFullScreenAnimator.h"
+#import "CameraViewController.h"
 
 
-
-@interface ImagesTableViewController () <MediaTableViewCellDelegate, UIViewControllerTransitioningDelegate>
+@interface ImagesTableViewController () <MediaTableViewCellDelegate, CameraViewControllerDelegate, UIViewControllerTransitioningDelegate>
 
 @property (nonatomic, weak) UIImageView *lastTappedImageView;
 @property (nonatomic, weak) UIView *lastSelectedCommentView;
@@ -47,6 +47,12 @@
     [self.tableView registerClass:[MediaTableViewCell class] forCellReuseIdentifier:@"mediaCell"];
     
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
+    
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] ||
+        [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum]) {
+        UIBarButtonItem *cameraButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:@selector(cameraPressed:)];
+        self.navigationItem.rightBarButtonItem = cameraButton;
+    }
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillShow:)
@@ -125,7 +131,7 @@
 }
 
 // Infinite Scroll:
-- (void) infiniteScrhollIfNecessary {
+- (void) infiniteScrollIfNecessary {
     // #3
     NSIndexPath *bottomIndexPath = [[self.tableView indexPathsForVisibleRows] lastObject];
     
@@ -150,7 +156,27 @@
 
 // #4
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    [self infiniteScrhollIfNecessary];
+    [self infiniteScrollIfNecessary];
+}
+
+#pragma mark - Camera and CameraViewControllerDelegate
+
+- (void) cameraPressed:(UIBarButtonItem *) sender {
+    CameraViewController *cameraVC = [[CameraViewController alloc] init];
+    cameraVC.delegate = self;
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:cameraVC];
+    [self presentViewController:nav animated:YES completion:nil];
+    return;
+}
+
+- (void) cameraViewController:(CameraViewController *)cameraViewController didCompleteWithImage:(UIImage *)image {
+    [cameraViewController dismissViewControllerAnimated:YES completion:^{
+        if (image) {
+            NSLog(@"Got an image!");
+        } else {
+            NSLog(@"Closed without an image.");
+        }
+    }];
 }
 
 #pragma mark - Table view data source
@@ -333,6 +359,7 @@
         self.tableView.scrollIndicatorInsets = scrollIndicatorInsets;
     } completion:nil];
 }
+
 
 /*
 // Override to support conditional editing of the table view.

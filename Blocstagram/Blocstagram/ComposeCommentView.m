@@ -109,7 +109,7 @@
 - (void) commentButtonPressed:(UIButton *) sender {
     if (self.isWritingComment) {
         [self.textView resignFirstResponder];
-        self.textView.userInteractionEnabled = NO;
+        self.textView.userInteractionEnabled = YES;
         [self.delegate commentViewDidPressCommentButton:self];
     } else {
         [self setIsWritingComment:YES animated:YES];
