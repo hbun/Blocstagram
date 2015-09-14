@@ -14,7 +14,7 @@
     // Do nothing if the orientation is already correct
     if (self.imageOrientation == UIImageOrientationUp) return [self copy];
     
-    //We need to calculate the proper transformation to make the image upright.
+    // We need to calculate the proper transformation to make the image upright.
     // We do it in 2 steps: Rotate if Left/Right/Down, and then flip if Mirrored.
     CGAffineTransform transform = CGAffineTransformIdentity;
     
@@ -60,13 +60,14 @@
             break;
     }
     
-    //Now we draw the underlying CGImage into a new context, applying the transform
+    // Now we draw the underlying CGImage into a new context, applying the transform
     // calculated above.
     CGFloat scaleFactor = self.scale;
     
+    
     CGContextRef ctx = CGBitmapContextCreate(NULL,
                                              self.size.width * scaleFactor,
-                                             self.size.height *scaleFactor,
+                                             self.size.height * scaleFactor,
                                              CGImageGetBitsPerComponent(self.CGImage),
                                              0,
                                              CGImageGetColorSpace(self.CGImage),
@@ -80,11 +81,11 @@
         case UIImageOrientationLeftMirrored:
         case UIImageOrientationRight:
         case UIImageOrientationRightMirrored:
-            CGContextDrawImage(ctx, CGRectMake(0, 0, self.size.height, self.size.width), self.CGImage);
+            CGContextDrawImage(ctx, CGRectMake(0,0, self.size.height, self.size.width), self.CGImage);
             break;
             
         default:
-            CGContextDrawImage(ctx, CGRectMake(0, 0, self.size.width, self.size.height), self.CGImage);
+            CGContextDrawImage(ctx, CGRectMake(0,0, self.size.width, self.size.height), self.CGImage);
             break;
     }
     
@@ -94,7 +95,6 @@
     CGContextRelease(ctx);
     CGImageRelease(cgimg);
     return img;
-    
 }
 
 - (UIImage *) imageResizedToMatchAspectRatioOfSize:(CGSize)size {
@@ -138,9 +138,7 @@
     UIImage *image = [UIImage imageWithCGImage:imageRef scale:self.scale orientation:self.imageOrientation];
     CGImageRelease(imageRef);
     return image;
-
 }
-
 
 @end
 

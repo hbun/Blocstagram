@@ -173,6 +173,7 @@
     [cameraViewController dismissViewControllerAnimated:YES completion:^{
         if (image) {
             NSLog(@"Got an image!");
+            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
         } else {
             NSLog(@"Closed without an image.");
         }

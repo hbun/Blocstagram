@@ -64,14 +64,14 @@
     [self.imagePreview.layer addSublayer:self.captureVideoPreviewLayer];
     
     // #3
-    [AVCaptureDevice requestAccessForMediaType:AVMediaTypeAudio completionHandler:^(BOOL granted) {
+    [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
         dispatch_async(dispatch_get_main_queue(), ^{
             // #4
             if (granted) {
                 // #5
                 AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
                 
-                //#6
+                // #6
                 NSError *error = nil;
                 AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:&error];
                 if (!input) {
@@ -89,7 +89,7 @@
                     self.stillImageOutput = [[AVCaptureStillImageOutput alloc] init];
                     self.stillImageOutput.outputSettings = @{AVVideoCodecKey: AVVideoCodecJPEG};
                     
-                    [self.session addOutput: self.stillImageOutput];
+                    [self.session addOutput:self.stillImageOutput];
                     
                     [self.session startRunning];
                 }
@@ -97,18 +97,15 @@
                 UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Camera Permission Denied", @"camera permission denied title")
                                                                                  message:NSLocalizedString(@"This app doesn't have permission to use the camera; please update your privacy settings.", @"camera permission denied recovery suggestion")
                                                                           preferredStyle:UIAlertControllerStyleAlert];
-                [alertVC addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"OK", @"OK button")
-                                                            style:UIAlertActionStyleCancel
-                                                          handler:^(UIAlertAction *action) {
-                                                              [self.delegate cameraViewController: self didCompleteWithImage:nil];
-                                                          }]];
+                [alertVC addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"OK", @"OK button") style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+                    [self.delegate cameraViewController:self didCompleteWithImage:nil];
+                }]];
+                
                 [self presentViewController:alertVC animated:YES completion:nil];
             }
         });
     }];
-    
 }
-
 - (void) cameraButtonPressedOnToolbar:(CameraToolbar *)toolbar {
     AVCaptureConnection *videoConnection;
     
@@ -116,16 +113,16 @@
     // Find the right connection object
     for (AVCaptureConnection *connection in self.stillImageOutput.connections) {
         for (AVCaptureInputPort *port in connection.inputPorts) {
-            if([port.mediaType isEqual:AVMediaTypeVideo]) {
+            if ([port.mediaType isEqual:AVMediaTypeVideo]) {
                 videoConnection = connection;
                 break;
             }
         }
-        if (videoConnection) {break;}
+        if (videoConnection) { break; }
     }
     
     // #9
-    [self.stillImageOutput captureStillImageAsynchronouslyFromConnection:videoConnection completionHandler:^(CMSampleBufferRef imageSampleBuffer, NSError *error) {
+    [self.stillImageOutput captureStillImageAsynchronouslyFromConnection:videoConnection completionHandler: ^(CMSampleBufferRef imageSampleBuffer, NSError *error) {
         if (imageSampleBuffer) {
             // #10
             NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageSampleBuffer];
@@ -147,7 +144,7 @@
                                          CGRectGetMinY(bottomLine.frame) - CGRectGetMinY(topLine.frame));
             
             CGRect cropRect = gridRect;
-            cropRect.origin.x = (CGRectGetMinX(gridRect) + (image.size.width - CGRectGetWidth(gridRect)) /2);
+            cropRect.origin.x = (CGRectGetMinX(gridRect) + (image.size.width - CGRectGetWidth(gridRect)) / 2);
             
             image = [image imageCroppedToRect:cropRect];
             
@@ -164,9 +161,9 @@
                 
                 [self presentViewController:alertVC animated:YES completion:nil];
             });
+            
         }
     }];
-     
 }
 
 - (void) addViewsToViewHierarchy {
@@ -226,7 +223,7 @@
 
 #pragma mark - Layout
 
-- (void) viewWillLayoutSubviews {
+- (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
     
     CGFloat width = CGRectGetWidth(self.view.bounds);
@@ -238,7 +235,7 @@
     
     CGFloat thirdOfWidth = width / 3;
     
-    for (int i = 0; i <4; i++) {
+    for (int i = 0; i < 4; i++) {
         UIView *horizontalLine = self.horizontalLines[i];
         UIView *verticalLine = self.verticalLines[i];
         
@@ -257,7 +254,7 @@
     self.captureVideoPreviewLayer.frame = self.imagePreview.bounds;
     
     CGFloat cameraToolbarHeight = 100;
-    self.cameraToolbar.frame = CGRectMake(0, CGRectGetHeight(self.view.bounds)  - cameraToolbarHeight, width, cameraToolbarHeight);
+    self.cameraToolbar.frame = CGRectMake(0, CGRectGetHeight(self.view.bounds) - cameraToolbarHeight, width, cameraToolbarHeight);
 }
 
 #pragma mark - CameraToolbarDelegate
