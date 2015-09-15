@@ -15,8 +15,12 @@
 
 @property (nonatomic, strong) CropBox *cropBox;
 @property (nonatomic, assign) BOOL hasLoadedOnce;
+@property (nonatomic, strong) UIToolbar *topView;
+@property (nonatomic, strong) UIToolbar *bottomView;
+
 
 @end
+
 
 @implementation CropImageViewController
 
@@ -35,10 +39,17 @@
 
 - (void) viewDidLoad {
     [super viewDidLoad];
+    [self createViews];
+
     
     self.view.clipsToBounds = YES;
     
-    [self.view addSubview:self.cropBox];
+    NSMutableArray *views = [@[self.cropBox, self.topView, self.bottomView] mutableCopy];
+    
+    for (UIView *view in views) {
+        [self.view addSubview:view];
+    }
+//    [self.view addSubview:self.cropBox];
     
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Crop", @"Crop command") style:UIBarButtonItemStyleDone target:self action:@selector(cropPressed:)];
     
@@ -48,6 +59,17 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.view.backgroundColor = [UIColor colorWithWhite:0.88 alpha:1];
+
+}
+
+- (void) createViews {
+    self.topView = [UIToolbar new];
+    self.bottomView = [UIToolbar new];
+    UIColor *whiteBG = [UIColor colorWithWhite:1.0 alpha:.15];
+    self.topView.barTintColor = whiteBG;
+    self.bottomView.barTintColor = whiteBG;
+    self.topView.alpha = 0.5;
+    self.bottomView.alpha = 0.5;
 }
 
 - (void) viewWillLayoutSubviews {
@@ -65,11 +87,21 @@
     self.scrollView.frame = self.cropBox.frame;
     self.scrollView.clipsToBounds = NO;
     
+
+    CGFloat width = CGRectGetWidth(self.cropBox.bounds);
+    self.topView.frame = CGRectMake(0, self.topLayoutGuide.length, width, self.cropBox.frame.origin.y - self.topLayoutGuide.length);
+    
+    CGFloat yOriginOfBottomView = CGRectGetMaxY(self.topView.frame) + width;
+    CGFloat heightOfBottomView = CGRectGetHeight(self.view.frame) - yOriginOfBottomView;
+    self.bottomView.frame = CGRectMake(0, yOriginOfBottomView, width, heightOfBottomView);
+    
     [self recalculateZoomScale];
     
     if (self.hasLoadedOnce == NO) {
         self.scrollView.zoomScale = self.scrollView.minimumZoomScale;
         self.hasLoadedOnce = YES;
+        
+        
     }
 }
 

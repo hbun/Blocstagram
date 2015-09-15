@@ -20,7 +20,7 @@
 
 - (instancetype) init {
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    layout.itemSize = CGSizeMake(100, 100);
+    layout.itemSize = CGSizeMake(74.5, 74.5);
     
     return [super initWithCollectionViewLayout:layout];
 }
@@ -53,14 +53,13 @@ static NSString * const reuseIdentifier = @"cell";
     [super viewWillLayoutSubviews];
     
     CGFloat width = CGRectGetWidth(self.view.frame);
-    CGFloat minWidth = 100;
-    NSInteger divisor = width / minWidth;
-    CGFloat cellSize = width / divisor;
+    CGFloat cellSize = width / 4.04;
     
     UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *)self.collectionViewLayout;
     flowLayout.itemSize = CGSizeMake(cellSize, cellSize);
-    flowLayout.minimumInteritemSpacing = 0;
-    flowLayout.minimumLineSpacing = 0;
+    flowLayout.minimumInteritemSpacing = 1;
+    flowLayout.minimumLineSpacing = 1;
+
 }
 
 - (void) loadAssets {

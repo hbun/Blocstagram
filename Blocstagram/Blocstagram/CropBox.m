@@ -13,6 +13,7 @@
 @property (nonatomic, strong) NSArray *horizontalLines;
 @property (nonatomic, strong) NSArray *verticalLines;
 
+
 @end
 
 @implementation CropBox
@@ -64,6 +65,7 @@
     
     CGFloat width = CGRectGetWidth(self.frame);
     CGFloat thirdOfWidth = width / 3;
+    
     
     for (int i = 0; i < 4; i++) {
         UIView *horizontalLine = self.horizontalLines[i];
