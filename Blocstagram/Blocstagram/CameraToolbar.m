@@ -29,9 +29,9 @@
         self.cameraButton = [UIButton buttonWithType:UIButtonTypeCustom];
         self.rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
         
-        [self.leftButton addTarget:self action:@selector(leftButtonPressedOnToolbar:) forControlEvents:UIControlEventTouchUpInside];
-        [self.cameraButton addTarget:self action:@selector(cameraButtonPressedOnToolbar:) forControlEvents:UIControlEventTouchUpInside];
-        [self.rightButton addTarget:self action:@selector(rightButtonPressedOnToolbar:) forControlEvents:UIControlEventTouchUpInside];
+        [self.leftButton addTarget:self action:@selector(leftButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        [self.cameraButton addTarget:self action:@selector(cameraButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        [self.rightButton addTarget:self action:@selector(rightButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         
         [self.leftButton setImage:[UIImage imageNamed:imageNames.firstObject] forState:UIControlStateNormal];
 
