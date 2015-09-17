@@ -7,6 +7,7 @@
 //
 
 #import "PostToInstagramViewController.h"
+#import "FilterCollectionViewCell.h"
 
 @interface PostToInstagramViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIDocumentInteractionControllerDelegate>
 
@@ -47,7 +48,7 @@
         self.filterCollectionView.dataSource = self;
         self.filterCollectionView.delegate = self;
         self.filterCollectionView.showsHorizontalScrollIndicator = NO;
-        
+
         self.filterImages = [NSMutableArray arrayWithObject:sourceImage];
         self.filterTitles = [NSMutableArray arrayWithObject:NSLocalizedString(@"None", @"Label for when no filter is applied to a photo")];
         
@@ -90,10 +91,14 @@
         self.navigationItem.rightBarButtonItem = self.sendBarButton;
     }
     
-    [self.filterCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
+    
+    [self.filterCollectionView registerClass:[FilterCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
+    
+    // We'll use a vanilla UICollectionViewCell instead of a subclass. (Your assignment at the end will be to replace this with a UICollectionViewCell subclass.)
+    // Remove some of the layout code from this controller by replacing the vanilla UICollectionViewCell with a subclass. (Refer back to your UITableViewCell subclass for hints).
     
     self.view.backgroundColor = [UIColor whiteColor];
-    self.filterCollectionView.backgroundColor =[UIColor whiteColor];
+    self.filterCollectionView.backgroundColor = [UIColor whiteColor];
     
     self.navigationItem.title = NSLocalizedString(@"Apply Filter", @"apply filter view title");
 }
@@ -136,8 +141,8 @@
     return self.filterImages.count;
 }
 
-- (UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+- (FilterCollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    FilterCollectionViewCell *cell = (FilterCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     
     static NSInteger imageViewTag = 1000;
     static NSInteger labelTag = 1001;
@@ -401,6 +406,67 @@
             [composite setValue:darkScratchesImage forKey:kCIInputBackgroundImageKey];
             
             [self addCIImageToCollectionView:composite.outputImage withFilterTitle:NSLocalizedString(@"Film", @"Film Filter")];
+        }
+    }];
+    
+    // Extra Moody filter
+
+    
+    [self.photoFilterOperationQueue addOperationWithBlock:^{
+        CIVector *centerVector = [CIVector vectorWithX:CGRectGetMidX(sourceCIImage.extent) Y:CGRectGetMidY(sourceCIImage.extent)];
+        CIColor *color0 = [CIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.0];
+        CIColor *color1 = [CIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8];
+        NSNumber *radius = [NSNumber numberWithFloat:550.0];
+        
+        CIFilter *extraMoodyFilter = [CIFilter filterWithName:@"CISRGBToneCurveToLinear"];
+        [extraMoodyFilter setValue:sourceCIImage forKey:kCIInputImageKey];
+
+        CIFilter *gradientFilter = [CIFilter filterWithName:@"CIGaussianGradient" keysAndValues:
+                                    @"inputCenter", centerVector,
+                                    @"inputColor0", color0,
+                                    @"inputColor1", color1,
+                                    @"inputRadius", radius,
+                                        nil];
+        
+        if (extraMoodyFilter && gradientFilter) {
+            
+            CIImage *extraMoodyImage = extraMoodyFilter.outputImage;
+            CIImage *gradientImage = [gradientFilter.outputImage imageByCroppingToRect:sourceCIImage.extent];
+
+            CIImage *theExtraMoodyImage = [CIFilter filterWithName:@"CISourceOverCompositing" keysAndValues:
+                                           kCIInputImageKey, gradientImage,
+                                           kCIInputBackgroundImageKey, extraMoodyImage,
+                                           nil].outputImage;
+            
+            [self addCIImageToCollectionView:theExtraMoodyImage withFilterTitle:NSLocalizedString(@"Extra Moody", @"Extra Moody Filter")];
+
+        }
+    }];
+    
+    // Motion blur filter
+    [self.photoFilterOperationQueue addOperationWithBlock:^{
+        CIFilter *motionBlurFilter = [CIFilter filterWithName:@"CIMotionBlur" keysAndValues:
+                                      @"inputAngle", [NSNumber numberWithInt:25],
+                                      @"inputRadius", [NSNumber numberWithInt:12],
+                                      nil];
+        
+        if (motionBlurFilter) {
+            [motionBlurFilter setValue:sourceCIImage forKey:kCIInputImageKey];
+            [self addCIImageToCollectionView:motionBlurFilter.outputImage withFilterTitle:NSLocalizedString(@"Motion Blur", @"Motion Blur Filter")];
+        }
+    }];
+    
+    
+    // Melting filter
+    [self.photoFilterOperationQueue addOperationWithBlock:^{
+        CIFilter *meltingFilter = [CIFilter filterWithName:@"CIBumpDistortionLinear" keysAndValues:
+                                  @"inputScale", [NSNumber numberWithInt:.6],
+                                  @"inputRadius", [NSNumber numberWithInt:800],
+                                      nil];
+        
+        if (meltingFilter) {
+            [meltingFilter setValue:sourceCIImage forKey:kCIInputImageKey];
+            [self addCIImageToCollectionView:meltingFilter.outputImage withFilterTitle:NSLocalizedString(@"Melting", @"Melting Filter")];
         }
     }];
 }

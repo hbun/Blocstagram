@@ -36,6 +36,7 @@
 		67D74B251BA745A100D66FF4 /* CropImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67D74B241BA745A100D66FF4 /* CropImageViewController.m */; };
 		67D74B281BA7664A00D66FF4 /* ImageLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67D74B271BA7664A00D66FF4 /* ImageLibraryViewController.m */; };
 		67D74B2B1BA89AE700D66FF4 /* PostToInstagramViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67D74B2A1BA89AE700D66FF4 /* PostToInstagramViewController.m */; };
+		67D74B311BA9467E00D66FF4 /* FilterCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67D74B301BA9467E00D66FF4 /* FilterCollectionViewCell.m */; };
 		67E533221B8A430400CDE983 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 67E533211B8A430400CDE983 /* User.m */; };
 		67E533251B8A43A800CDE983 /* Media.m in Sources */ = {isa = PBXBuildFile; fileRef = 67E533241B8A43A800CDE983 /* Media.m */; };
 		67E533281B8A449300CDE983 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 67E533271B8A449300CDE983 /* Comment.m */; };
@@ -105,6 +106,8 @@
 		67D74B271BA7664A00D66FF4 /* ImageLibraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageLibraryViewController.m; sourceTree = "<group>"; };
 		67D74B291BA89AE700D66FF4 /* PostToInstagramViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostToInstagramViewController.h; sourceTree = "<group>"; };
 		67D74B2A1BA89AE700D66FF4 /* PostToInstagramViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostToInstagramViewController.m; sourceTree = "<group>"; };
+		67D74B2F1BA9467E00D66FF4 /* FilterCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterCollectionViewCell.h; sourceTree = "<group>"; };
+		67D74B301BA9467E00D66FF4 /* FilterCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterCollectionViewCell.m; sourceTree = "<group>"; };
 		67E533201B8A430400CDE983 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		67E533211B8A430400CDE983 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		67E533231B8A43A800CDE983 /* Media.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Media.h; sourceTree = "<group>"; };
@@ -182,6 +185,8 @@
 				675824001BA131F000917631 /* ComposeCommentView.m */,
 				67BE99F71B90E8C300D21868 /* MediaFullScreenViewController.h */,
 				67BE99F81B90E8C300D21868 /* MediaFullScreenViewController.m */,
+				67D74B2F1BA9467E00D66FF4 /* FilterCollectionViewCell.h */,
+				67D74B301BA9467E00D66FF4 /* FilterCollectionViewCell.m */,
 				67BE99FA1B911D1000D21868 /* MediaFullScreenAnimator.h */,
 				67BE99FB1B911D1000D21868 /* MediaFullScreenAnimator.m */,
 				67D74B291BA89AE700D66FF4 /* PostToInstagramViewController.h */,
@@ -314,7 +319,7 @@
 		676C4F961B86573E001F2D03 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Bloc;
 				TargetAttributes = {
 					676C4F9D1B86573E001F2D03 = {
@@ -414,6 +419,7 @@
 			files = (
 				67BE99F91B90E8C300D21868 /* MediaFullScreenViewController.m in Sources */,
 				67D74B251BA745A100D66FF4 /* CropImageViewController.m in Sources */,
+				67D74B311BA9467E00D66FF4 /* FilterCollectionViewCell.m in Sources */,
 				67E533221B8A430400CDE983 /* User.m in Sources */,
 				67E533281B8A449300CDE983 /* Comment.m in Sources */,
 				67E5332E1B8A662400CDE983 /* MediaTableViewCell.m in Sources */,
@@ -487,6 +493,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -555,6 +562,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Blocstagram/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bloc.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -566,6 +574,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Blocstagram/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bloc.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -584,6 +593,7 @@
 				);
 				INFOPLIST_FILE = BlocstagramTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bloc.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Blocstagram.app/Blocstagram";
 			};
@@ -599,6 +609,7 @@
 				);
 				INFOPLIST_FILE = BlocstagramTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bloc.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Blocstagram.app/Blocstagram";
 			};
