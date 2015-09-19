@@ -216,7 +216,7 @@ static NSParagraphStyle *paragraphStyle;
             // It's regular
             self.imageHeightConstraint.constant = 320;
         }
-        
+
     } else {
         self.imageHeightConstraint.constant = 0;
     }

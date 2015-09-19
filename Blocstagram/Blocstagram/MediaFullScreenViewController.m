@@ -9,10 +9,11 @@
 #import "MediaFullScreenViewController.h"
 #import "Media.h"
 
-@interface MediaFullScreenViewController () <UIScrollViewDelegate>
+@interface MediaFullScreenViewController () <UIScrollViewDelegate, UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) UITapGestureRecognizer *tap;
 @property (nonatomic, strong) UITapGestureRecognizer *doubleTap;
+@property (nonatomic, strong) UITapGestureRecognizer *tapBehindGesture;
 
 @end
 
@@ -30,10 +31,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 // #1
+    
     self.scrollView = [UIScrollView new];
     self.scrollView.delegate = self;
     self.scrollView.backgroundColor = [UIColor whiteColor];
-    
+
     [self.view addSubview:self.scrollView];
     
     // #2
@@ -54,6 +56,7 @@
     
     [self.scrollView addGestureRecognizer:self.tap];
     [self.scrollView addGestureRecognizer:self.doubleTap];
+
 }
 
 - (void) viewWillLayoutSubviews {
@@ -120,9 +123,33 @@
     [super viewWillAppear:animated];
     
     [self centerScrollView];
+    
+    if (!self.tapBehindGesture){
+    
+    self.tapBehindGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapBehindDetected:)];
+        self.tapBehindGesture.numberOfTapsRequired = 1;
+        self.tapBehindGesture.cancelsTouchesInView = NO; //So the user can still interact with controls in the modal view
+        self.tapBehindGesture.delegate = self;
+    }
+    [self.presentingViewController.view.window addGestureRecognizer:self.tapBehindGesture];
+}
+
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer*)otherGestureRecognizer {
+    return YES;
 }
 
 #pragma mark - Gesture Recognizers
+
+- (void)tapBehindDetected:(UITapGestureRecognizer *)sender {
+
+    if (sender.state == UIGestureRecognizerStateEnded) {
+        CGPoint location = [sender locationInView: self.presentingViewController.view];
+        
+        if (![self.view pointInside:[self.view convertPoint:location fromView:self.view.window.rootViewController.view] withEvent:nil]) {
+                [self dismissViewControllerAnimated:YES completion:nil];
+        }
+    }
+}
 
 - (void) tapFired:(UITapGestureRecognizer *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -147,6 +174,15 @@
     }
 }
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    // to avoid nasty crashes
+    if (self.tapBehindGesture) {
+        [self.view.window removeGestureRecognizer:self.tapBehindGesture];
+        self.tapBehindGesture = nil;
+    }
+}
 
 /*
 #pragma mark - Navigation
