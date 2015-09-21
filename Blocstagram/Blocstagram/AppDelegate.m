@@ -48,6 +48,12 @@
     return YES;
 }
 
+static BOOL isRunningTests(void)
+{
+    NSDictionary* environment = [[NSProcessInfo processInfo] environment];
+    NSString* injectBundle = environment[@"XCInjectBundle"];
+    return [[injectBundle pathExtension] isEqualToString:@"octest"];
+}
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {

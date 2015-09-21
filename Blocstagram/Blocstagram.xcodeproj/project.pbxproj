@@ -14,6 +14,20 @@
 		675E7C0A1BA4EAFA007EF3A6 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 675E7C091BA4EAFA007EF3A6 /* CameraViewController.m */; };
 		675E7C0D1BA55643007EF3A6 /* UIImage+ImageUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 675E7C0C1BA55643007EF3A6 /* UIImage+ImageUtilities.m */; };
 		676518171BAF784700AF09DE /* UserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 676518161BAF784700AF09DE /* UserTests.m */; settings = {ASSET_TAGS = (); }; };
+		676518191BAF817B00AF09DE /* MediaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 676518181BAF817B00AF09DE /* MediaTests.m */; settings = {ASSET_TAGS = (); }; };
+		6765181B1BAFE20B00AF09DE /* ComposeCommentViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6765181A1BAFE20B00AF09DE /* ComposeCommentViewTests.m */; settings = {ASSET_TAGS = (); }; };
+		6765181D1BAFE77E00AF09DE /* MediaTableCellViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6765181C1BAFE77E00AF09DE /* MediaTableCellViewTests.m */; settings = {ASSET_TAGS = (); }; };
+		676518291BAFE8BC00AF09DE /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6765181F1BAFE8BC00AF09DE /* 1.jpg */; settings = {ASSET_TAGS = (); }; };
+		6765182A1BAFE8BC00AF09DE /* 10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 676518201BAFE8BC00AF09DE /* 10.jpg */; settings = {ASSET_TAGS = (); }; };
+		6765182B1BAFE8BC00AF09DE /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 676518211BAFE8BC00AF09DE /* 2.jpg */; settings = {ASSET_TAGS = (); }; };
+		6765182C1BAFE8BC00AF09DE /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 676518221BAFE8BC00AF09DE /* 3.jpg */; settings = {ASSET_TAGS = (); }; };
+		6765182D1BAFE8BC00AF09DE /* 4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 676518231BAFE8BC00AF09DE /* 4.jpg */; settings = {ASSET_TAGS = (); }; };
+		6765182E1BAFE8BC00AF09DE /* 5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 676518241BAFE8BC00AF09DE /* 5.jpg */; settings = {ASSET_TAGS = (); }; };
+		6765182F1BAFE8BC00AF09DE /* 6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 676518251BAFE8BC00AF09DE /* 6.jpg */; settings = {ASSET_TAGS = (); }; };
+		676518301BAFE8BC00AF09DE /* 7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 676518261BAFE8BC00AF09DE /* 7.jpg */; settings = {ASSET_TAGS = (); }; };
+		676518311BAFE8BC00AF09DE /* 8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 676518271BAFE8BC00AF09DE /* 8.jpg */; settings = {ASSET_TAGS = (); }; };
+		676518321BAFE8BC00AF09DE /* 9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 676518281BAFE8BC00AF09DE /* 9.jpg */; settings = {ASSET_TAGS = (); }; };
+		676518341BB0874B00AF09DE /* FeedController.h in Sources */ = {isa = PBXBuildFile; fileRef = 676518331BB0874B00AF09DE /* FeedController.h */; settings = {ASSET_TAGS = (); }; };
 		676B57D21BA675D7008FCAA8 /* CropBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 676B57D11BA675D7008FCAA8 /* CropBox.m */; };
 		676C4FA41B86573E001F2D03 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 676C4FA31B86573E001F2D03 /* main.m */; };
 		676C4FA71B86573E001F2D03 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 676C4FA61B86573E001F2D03 /* AppDelegate.m */; };
@@ -32,6 +46,8 @@
 		676C4FDB1B865A57001F2D03 /* 10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 676C4FD11B865A57001F2D03 /* 10.jpg */; };
 		676C4FDE1B865A91001F2D03 /* ImagesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 676C4FDD1B865A91001F2D03 /* ImagesTableViewController.m */; };
 		678317E21B8D3C180019C72B /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 678317E11B8D3C180019C72B /* LoginViewController.m */; };
+		678AFBC21BB0CD9100BD450D /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 678AFBC01BB0CD9100BD450D /* libOCMock.a */; settings = {ASSET_TAGS = (); }; };
+		678AFBC41BB0CE9F00BD450D /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 678AFBC01BB0CD9100BD450D /* libOCMock.a */; };
 		67BE99F91B90E8C300D21868 /* MediaFullScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BE99F81B90E8C300D21868 /* MediaFullScreenViewController.m */; };
 		67BE99FC1B911D1000D21868 /* MediaFullScreenAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 67BE99FB1B911D1000D21868 /* MediaFullScreenAnimator.m */; };
 		67D74B251BA745A100D66FF4 /* CropImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67D74B241BA745A100D66FF4 /* CropImageViewController.m */; };
@@ -71,6 +87,20 @@
 		675E7C0B1BA55643007EF3A6 /* UIImage+ImageUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageUtilities.h"; sourceTree = "<group>"; };
 		675E7C0C1BA55643007EF3A6 /* UIImage+ImageUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageUtilities.m"; sourceTree = "<group>"; };
 		676518161BAF784700AF09DE /* UserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTests.m; sourceTree = "<group>"; };
+		676518181BAF817B00AF09DE /* MediaTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaTests.m; sourceTree = "<group>"; };
+		6765181A1BAFE20B00AF09DE /* ComposeCommentViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeCommentViewTests.m; sourceTree = "<group>"; };
+		6765181C1BAFE77E00AF09DE /* MediaTableCellViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaTableCellViewTests.m; sourceTree = "<group>"; };
+		6765181F1BAFE8BC00AF09DE /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
+		676518201BAFE8BC00AF09DE /* 10.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 10.jpg; sourceTree = "<group>"; };
+		676518211BAFE8BC00AF09DE /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
+		676518221BAFE8BC00AF09DE /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
+		676518231BAFE8BC00AF09DE /* 4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4.jpg; sourceTree = "<group>"; };
+		676518241BAFE8BC00AF09DE /* 5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 5.jpg; sourceTree = "<group>"; };
+		676518251BAFE8BC00AF09DE /* 6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 6.jpg; sourceTree = "<group>"; };
+		676518261BAFE8BC00AF09DE /* 7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 7.jpg; sourceTree = "<group>"; };
+		676518271BAFE8BC00AF09DE /* 8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 8.jpg; sourceTree = "<group>"; };
+		676518281BAFE8BC00AF09DE /* 9.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 9.jpg; sourceTree = "<group>"; };
+		676518331BB0874B00AF09DE /* FeedController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedController.h; sourceTree = "<group>"; };
 		676B57D01BA675D7008FCAA8 /* CropBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CropBox.h; sourceTree = "<group>"; };
 		676B57D11BA675D7008FCAA8 /* CropBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CropBox.m; sourceTree = "<group>"; };
 		676C4F9E1B86573E001F2D03 /* Blocstagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blocstagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,10 +127,20 @@
 		676C4FDD1B865A91001F2D03 /* ImagesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagesTableViewController.m; sourceTree = "<group>"; };
 		678317E01B8D3C180019C72B /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		678317E11B8D3C180019C72B /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		678AFBC01BB0CD9100BD450D /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOCMock.a; sourceTree = "<group>"; };
 		67BE99F71B90E8C300D21868 /* MediaFullScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaFullScreenViewController.h; sourceTree = "<group>"; };
 		67BE99F81B90E8C300D21868 /* MediaFullScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaFullScreenViewController.m; sourceTree = "<group>"; };
 		67BE99FA1B911D1000D21868 /* MediaFullScreenAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaFullScreenAnimator.h; sourceTree = "<group>"; };
 		67BE99FB1B911D1000D21868 /* MediaFullScreenAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaFullScreenAnimator.m; sourceTree = "<group>"; };
+		67D5E2131BB0C73900D9BF05 /* NSNotificationCenter+OCMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+OCMAdditions.h"; sourceTree = "<group>"; };
+		67D5E2141BB0C73900D9BF05 /* OCMArg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMArg.h; sourceTree = "<group>"; };
+		67D5E2151BB0C73900D9BF05 /* OCMConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMConstraint.h; sourceTree = "<group>"; };
+		67D5E2161BB0C73900D9BF05 /* OCMLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMLocation.h; sourceTree = "<group>"; };
+		67D5E2171BB0C73900D9BF05 /* OCMMacroState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMMacroState.h; sourceTree = "<group>"; };
+		67D5E2181BB0C73900D9BF05 /* OCMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMock.h; sourceTree = "<group>"; };
+		67D5E2191BB0C73900D9BF05 /* OCMockObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockObject.h; sourceTree = "<group>"; };
+		67D5E21A1BB0C73900D9BF05 /* OCMRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMRecorder.h; sourceTree = "<group>"; };
+		67D5E21B1BB0C73900D9BF05 /* OCMStubRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMStubRecorder.h; sourceTree = "<group>"; };
 		67D74B231BA745A100D66FF4 /* CropImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CropImageViewController.h; sourceTree = "<group>"; };
 		67D74B241BA745A100D66FF4 /* CropImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CropImageViewController.m; sourceTree = "<group>"; };
 		67D74B261BA7664A00D66FF4 /* ImageLibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageLibraryViewController.h; sourceTree = "<group>"; };
@@ -125,6 +165,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				678AFBC41BB0CE9F00BD450D /* libOCMock.a in Frameworks */,
 				B125F6A6C3DE7D38C9D1C8AB /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -133,6 +174,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				678AFBC21BB0CD9100BD450D /* libOCMock.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +188,24 @@
 				1422BEC1660179A57A88D798 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		6765181E1BAFE8BC00AF09DE /* BlocstagramPhotos */ = {
+			isa = PBXGroup;
+			children = (
+				6765181F1BAFE8BC00AF09DE /* 1.jpg */,
+				676518201BAFE8BC00AF09DE /* 10.jpg */,
+				676518211BAFE8BC00AF09DE /* 2.jpg */,
+				676518221BAFE8BC00AF09DE /* 3.jpg */,
+				676518231BAFE8BC00AF09DE /* 4.jpg */,
+				676518241BAFE8BC00AF09DE /* 5.jpg */,
+				676518251BAFE8BC00AF09DE /* 6.jpg */,
+				676518261BAFE8BC00AF09DE /* 7.jpg */,
+				676518271BAFE8BC00AF09DE /* 8.jpg */,
+				676518281BAFE8BC00AF09DE /* 9.jpg */,
+			);
+			name = BlocstagramPhotos;
+			path = ../../../../Desktop/BlocstagramPhotos;
 			sourceTree = "<group>";
 		};
 		676C4F951B86573D001F2D03 = {
@@ -232,8 +292,14 @@
 			isa = PBXGroup;
 			children = (
 				676C4FBD1B86573E001F2D03 /* BlocstagramTests.m */,
+				67D5E20F1BB0C52600D9BF05 /* libraries */,
 				676C4FBB1B86573E001F2D03 /* Supporting Files */,
 				676518161BAF784700AF09DE /* UserTests.m */,
+				6765181C1BAFE77E00AF09DE /* MediaTableCellViewTests.m */,
+				676518181BAF817B00AF09DE /* MediaTests.m */,
+				6765181A1BAFE20B00AF09DE /* ComposeCommentViewTests.m */,
+				676518331BB0874B00AF09DE /* FeedController.h */,
+				6765181E1BAFE8BC00AF09DE /* BlocstagramPhotos */,
 			);
 			path = BlocstagramTests;
 			sourceTree = "<group>";
@@ -261,6 +327,40 @@
 				676C4FD11B865A57001F2D03 /* 10.jpg */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		67D5E20F1BB0C52600D9BF05 /* libraries */ = {
+			isa = PBXGroup;
+			children = (
+				67D5E2101BB0C73900D9BF05 /* OCMock_3.1.5 */,
+			);
+			name = libraries;
+			sourceTree = "<group>";
+		};
+		67D5E2101BB0C73900D9BF05 /* OCMock_3.1.5 */ = {
+			isa = PBXGroup;
+			children = (
+				678AFBC01BB0CD9100BD450D /* libOCMock.a */,
+				67D5E2121BB0C73900D9BF05 /* OCMock */,
+			);
+			name = OCMock_3.1.5;
+			path = libraries/OCMock_3.1.5;
+			sourceTree = "<group>";
+		};
+		67D5E2121BB0C73900D9BF05 /* OCMock */ = {
+			isa = PBXGroup;
+			children = (
+				67D5E2181BB0C73900D9BF05 /* OCMock.h */,
+				67D5E2131BB0C73900D9BF05 /* NSNotificationCenter+OCMAdditions.h */,
+				67D5E2141BB0C73900D9BF05 /* OCMArg.h */,
+				67D5E2151BB0C73900D9BF05 /* OCMConstraint.h */,
+				67D5E2161BB0C73900D9BF05 /* OCMLocation.h */,
+				67D5E2171BB0C73900D9BF05 /* OCMMacroState.h */,
+				67D5E2191BB0C73900D9BF05 /* OCMockObject.h */,
+				67D5E21A1BB0C73900D9BF05 /* OCMRecorder.h */,
+				67D5E21B1BB0C73900D9BF05 /* OCMStubRecorder.h */,
+			);
+			path = OCMock;
 			sourceTree = "<group>";
 		};
 		BE371FE8BAA8C5FC6F3DEE0D /* Frameworks */ = {
@@ -317,6 +417,9 @@
 		676C4F961B86573E001F2D03 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					New,
+				);
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = Bloc;
 				TargetAttributes = {
@@ -372,6 +475,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6765182F1BAFE8BC00AF09DE /* 6.jpg in Resources */,
+				6765182B1BAFE8BC00AF09DE /* 2.jpg in Resources */,
+				6765182A1BAFE8BC00AF09DE /* 10.jpg in Resources */,
+				676518321BAFE8BC00AF09DE /* 9.jpg in Resources */,
+				676518311BAFE8BC00AF09DE /* 8.jpg in Resources */,
+				676518301BAFE8BC00AF09DE /* 7.jpg in Resources */,
+				676518291BAFE8BC00AF09DE /* 1.jpg in Resources */,
+				6765182E1BAFE8BC00AF09DE /* 5.jpg in Resources */,
+				6765182D1BAFE8BC00AF09DE /* 4.jpg in Resources */,
+				6765182C1BAFE8BC00AF09DE /* 3.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,8 +556,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				676518191BAF817B00AF09DE /* MediaTests.m in Sources */,
 				676518171BAF784700AF09DE /* UserTests.m in Sources */,
+				6765181D1BAFE77E00AF09DE /* MediaTableCellViewTests.m in Sources */,
+				676518341BB0874B00AF09DE /* FeedController.h in Sources */,
 				676C4FBE1B86573E001F2D03 /* BlocstagramTests.m in Sources */,
+				6765181B1BAFE20B00AF09DE /* ComposeCommentViewTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -559,6 +676,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Blocstagram/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/BlocstagramTests/libraries/OCMock_3.1.5",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -570,6 +691,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Blocstagram/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/BlocstagramTests/libraries/OCMock_3.1.5",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -582,12 +707,19 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(SRCROOT)/BlocstagramTests/libraries/OCMock_3.1.5/OCMock";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = BlocstagramTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/BlocstagramTests/libraries/OCMock_3.1.5",
+				);
+				OCMock = "$(SRCROOT)/BlocstagramTests/libraries/OCMock_3.1.5/OCMock";
+				"OTHER_LDFLAGS[arch=*]" = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Blocstagram.app/Blocstagram";
 			};
@@ -601,8 +733,15 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(SRCROOT)/BlocstagramTests/libraries/OCMock_3.1.5/OCMock";
 				INFOPLIST_FILE = BlocstagramTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/BlocstagramTests/libraries/OCMock_3.1.5",
+				);
+				OCMock = "$(SRCROOT)/BlocstagramTests/libraries/OCMock_3.1.5/OCMock";
+				"OTHER_LDFLAGS[arch=*]" = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Blocstagram.app/Blocstagram";
 			};
