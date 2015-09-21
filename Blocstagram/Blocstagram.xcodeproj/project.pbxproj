@@ -13,6 +13,7 @@
 		675E7C071BA4D05A007EF3A6 /* CameraToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 675E7C061BA4D05A007EF3A6 /* CameraToolbar.m */; };
 		675E7C0A1BA4EAFA007EF3A6 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 675E7C091BA4EAFA007EF3A6 /* CameraViewController.m */; };
 		675E7C0D1BA55643007EF3A6 /* UIImage+ImageUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 675E7C0C1BA55643007EF3A6 /* UIImage+ImageUtilities.m */; };
+		676518171BAF784700AF09DE /* UserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 676518161BAF784700AF09DE /* UserTests.m */; settings = {ASSET_TAGS = (); }; };
 		676B57D21BA675D7008FCAA8 /* CropBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 676B57D11BA675D7008FCAA8 /* CropBox.m */; };
 		676C4FA41B86573E001F2D03 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 676C4FA31B86573E001F2D03 /* main.m */; };
 		676C4FA71B86573E001F2D03 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 676C4FA61B86573E001F2D03 /* AppDelegate.m */; };
@@ -69,6 +70,7 @@
 		675E7C091BA4EAFA007EF3A6 /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
 		675E7C0B1BA55643007EF3A6 /* UIImage+ImageUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageUtilities.h"; sourceTree = "<group>"; };
 		675E7C0C1BA55643007EF3A6 /* UIImage+ImageUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageUtilities.m"; sourceTree = "<group>"; };
+		676518161BAF784700AF09DE /* UserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTests.m; sourceTree = "<group>"; };
 		676B57D01BA675D7008FCAA8 /* CropBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CropBox.h; sourceTree = "<group>"; };
 		676B57D11BA675D7008FCAA8 /* CropBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CropBox.m; sourceTree = "<group>"; };
 		676C4F9E1B86573E001F2D03 /* Blocstagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blocstagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -231,6 +233,7 @@
 			children = (
 				676C4FBD1B86573E001F2D03 /* BlocstagramTests.m */,
 				676C4FBB1B86573E001F2D03 /* Supporting Files */,
+				676518161BAF784700AF09DE /* UserTests.m */,
 			);
 			path = BlocstagramTests;
 			sourceTree = "<group>";
@@ -440,6 +443,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				676518171BAF784700AF09DE /* UserTests.m in Sources */,
 				676C4FBE1B86573E001F2D03 /* BlocstagramTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
