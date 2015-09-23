@@ -65,6 +65,8 @@
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
+    
+    NSLog(@"This is a pull requet test!");
 }
 
 - (void) dealloc {
@@ -145,13 +147,14 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
+    [super viewWillAppear:animated];
     if (indexPath) {
         [self.tableView deselectRowAtIndexPath:indexPath animated:animated];
     }
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
-    
+    [super viewWillDisappear:animated];
 }
 
 #pragma mark - UIScrollDelegate
